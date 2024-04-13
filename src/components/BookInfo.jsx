@@ -49,9 +49,9 @@ function BookInfo() {
 
 
   return (
-    <div className="grid grid-cols-9  text-black dark:bg-gray-900 dark:text-slate-300 pt-16">
+    <div className="grid grid-cols-9 text-black dark:bg-gray-900 dark:text-slate-300 pt-16">
 
-        <div className="col-span-2 flex items-start justify-center">
+        <div className="col-span-2 flex items-start justify-center bg-amber-300 dark:bg-slate-800 mt-3 ml-3">
           <div className="fixed flex flex-col gap-5">
             <img src={data.cover} alt="hi" className="mt-8 w-[250px] h-[350px] shadow-xl border rounded-md"/>
             <div className="flex">
@@ -75,10 +75,10 @@ function BookInfo() {
           </div>
         </div>
 
-        <div className="col-span-5 pl-10 pt-10 flex flex-col gap-3 rounded-lg shadow-md bg-amber-300 m-2 mt-3 dark:bg-slate-800">
+        <div className="col-span-5 pl-10 pt-10 flex flex-col gap-3 rounded-r-lg bg-amber-300 mt-3 dark:bg-slate-800">
           {/* <div className=""> */}
             <h1 className="text-5xl font-serif">{data.name}</h1>
-            <h1 className="text-2xl">{data.author[0].name}</h1>
+            <h1 className="text-2xl">{data.author.name}</h1>
             <span className="flex">{rating}</span>
             <div>
               <span>{data.about.substring(0,400)}</span>
@@ -169,15 +169,15 @@ function BookInfo() {
 
         </div>
 
-        <div className="col-span-2 pl-5 rounded-lg shadow-md bg-amber-300 p-5 m-2 mt-3 dark:bg-slate-800">
+        <div className="col-span-2 pl-5 rounded-lg shadow-md bg-amber-300 p-5 m-2 mb-1 mt-3 dark:bg-slate-800">
           <h1 className="text-center font-bold text-2xl mb-5 mt-3">About the Author</h1>
           <div className="avatar flex items-center justify-center bg--300">
             <div className=" w-48 pl-3 mb-4">
-              <img src={data.author[0].image} />
+              <img src={data.author.image} />
             </div>
           </div>
           <div>
-            <span className="">{data.author[0].about.substring(0,400)}</span>
+            <span className="">{data.author.about.substring(0,400)}</span>
             {isExpandedAuthor && (
               <span className="">
                 {data.about.substring(300,)}

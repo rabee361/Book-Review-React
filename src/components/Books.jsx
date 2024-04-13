@@ -4,9 +4,10 @@ import { keepPreviousData } from '@tanstack/react-query';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 import Genres from './Genres'
+import Pagination from './Pagination';
 
 function Books({getBook}) {
-  const page = 2
+  const [page , setPage] = useState(1)
   const [genre , setGenre] = useState(' ')
 
   const { data,
@@ -27,14 +28,19 @@ function Books({getBook}) {
 
 
   return (
-    <div className="grid grid-cols-6 pt-16 h-screen text-black dark:text-slate-400 transition-all ease-linear duration-100">
+    <div className="grid grid-cols-6 pt-16 h-screen gap-2 text-black dark:text-slate-400 transition-all ease-linear duration-100">
 
-      <div className="flex flex-col items-center gap-3 col-span-1 text-center dark:bg-gray-900 ">
+      <div className="flex flex-col items-center gap-3 mt-2 col-span-1 text-center dark:bg-slate-800 shadow-xl rounded-xl ml-1 bg-amber-300">
         <div className="pt-6 pl-3 gap-1 w-full flex flex-col">
           <h1 className="font-bold">Categories:</h1> 
-          {data2.map((genre) => (
-                <h3 key={genre.id} className="dark:hover:text-white">{genre.name}</h3>
+          {data2.slice(0,10).map((genre) => (
+                <h3 key={genre.id} className="dark:hover:text-white hover:text-amber-100">{genre.name}</h3>
             ))}
+            <small>
+              <Link to="/genres">
+                see more
+              </Link>
+            </small>
         </div>
 
         <div className="pt-6 pl-3 gap-1 w-full flex flex-col">
@@ -46,18 +52,23 @@ function Books({getBook}) {
 
       </div>
 
-      <div className="grid grid-cols-6 grid-rows-3 gap-1 col-span-4 p-3 flex-grow-3 dark:bg-gray-900">
-        {data.results.map((book) => (
-        <Link to={`/book/${book.id}`}>
-          <div key={book.id} className="" onClick={() => getBook(book.id)}>
-              <img src={book.cover} alt={book.name} className="h-[230px] border hover:border-stone-950"/>
-          </div>
-        </Link>
-            ))}
+      <div className="col-span-4 p-3 mt-2 flex-grow-3 dark:bg-slate-800 bg-amber-300 shadow-lg rounded-lg">
+        <div className="grid grid-cols-6 grid-rows-2 row-span-2 gap-1">
+          {data.results.map((book) => (
+          <Link to={`/book/${book.id}`}>
+            <div key={book.id} className="" onClick={() => getBook(book.id)}>
+                <img src={book.cover} alt={book.name} className="h-[230px] border hover:border-stone-950"/>
+            </div>
+          </Link>
+              ))}
+        </div>
+
+        <Pagination setPage={setPage} count={data.count}/>
+
       </div>
 
 
-      <div className=" dark:bg-gray-900 text-center">
+      <div className="flex flex-col items-center gap-3 mt-2 dark:bg-slate-800 text-center bg-amber-300 shadow-xl rounded-xl mr-1">
         <div className="">
           <h1 className="font-bold">Top Articles: </h1>
           {data4.map((post) => (
