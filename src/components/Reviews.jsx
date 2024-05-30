@@ -2,7 +2,7 @@ import React from 'react'
 import { useQuery } from 'react-query'
 import { AiOutlineLike } from "react-icons/ai";
 import { FaRegComment } from "react-icons/fa";
-
+import { Link } from 'react-router-dom';
 
 
 function Reviews({bookId}) {
@@ -47,7 +47,6 @@ function Reviews({bookId}) {
     let threeStarsValue = threeStars/total * 100 ;
     let twoStarsValue = twoStars/total * 100 ;
     let oneStarValue = oneStar/total * 100 ;
-    console.log(threeStarsValue,oneStarValue,total)
 
 
   return (
@@ -99,8 +98,8 @@ function Reviews({bookId}) {
             </div>
             <div className=" grid col-span-12 gap-y-1 w-full bg--200">
               <span className="w-fit text-sm ml-[521px] bg--400 text-nowrap">{review.created}</span>
-              <span className="w-fit mt-2 bg--300">{review.text.substring(0,200)}</span>
-              <div className="flex w-fit gap-2 ml-[521px] bg--400 text-xl">
+              {review.text.length > 200 ? <span>{review.text.substring(0,200)} <Link>...read full review </Link> </span> : <span className="w-fit mt-2"> {review.text}</span>}
+              <div className="flex w-fit gap-2 ml-[500px] bg--400 text-xl">
                 <span className="flex gap-2 items-center"><small>{review.total_likes}</small><AiOutlineLike className="hover:text-amber-400" /></span>
                 <span className="flex gap-2 items-center">{review.total_comments}<FaRegComment className="hover:text-amber-400" /></span>
               </div>

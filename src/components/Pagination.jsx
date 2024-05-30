@@ -55,7 +55,7 @@ export function Pagination({setPage,count}) {
         variant="text"
         className="flex items-center gap-2"
         onClick={next}
-        disabled={active === 5}
+        disabled={active === book_num}
       >
         Next
         <ArrowRightIcon strokeWidth={2} className="h-4 w-4" />

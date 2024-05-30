@@ -25,7 +25,7 @@ function NavBar() {
   
   return (
     <>
-        <div className="fixed z-50 navbar bg-amber-400 h-[10px]  text-black dark:bg-gray-800 dark:text-slate-300 transition-all ease-linear duration-100">
+        <div className="fixed z-50 navbar h-[10px] backdrop-blur-sm text-white dark:bg-gray-800 dark:text-slate-300 transition-all ease-linear duration-100 nav-blur-start">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -40,7 +40,7 @@ function NavBar() {
                 <ul className="menu menu-horizontal px-1">
                 <li><a>Home</a></li>
                 <li><a>Browse</a></li>
-                <li><a>Item</a></li>
+                <li><a>item</a></li>
                 </ul>
                 <input type="text" placeholder='      search books' className="bg-white rounded-md pl-10 text-black" />
             </div>

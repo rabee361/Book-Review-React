@@ -6,6 +6,7 @@ import RelatedBooks from './RelatedBooks';
 import { IoIosArrowDown } from "react-icons/io";
 import BooksByAuthor from './BooksByAuthor'
 import { useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 function BookInfo() {
@@ -51,7 +52,7 @@ function BookInfo() {
   return (
     <div className="grid grid-cols-9 text-black dark:bg-gray-900 dark:text-slate-300 pt-16">
 
-        <div className="col-span-2 flex items-start justify-center bg-amber-300 dark:bg-slate-800 mt-3 ml-3">
+        <div className="col-span-2 flex items-start justify-center rounded-s-2xl dark:bg-slate-800 mt-3 ml-3">
           <div className="fixed flex flex-col gap-5">
             <img src={data.cover} alt="hi" className="mt-8 w-[250px] h-[350px] shadow-xl border rounded-md"/>
             <div className="flex">
@@ -75,7 +76,7 @@ function BookInfo() {
           </div>
         </div>
 
-        <div className="col-span-5 pl-10 pt-10 flex flex-col gap-3 rounded-r-lg bg-amber-300 mt-3 dark:bg-slate-800">
+        <div className="col-span-5 pl-10 pt-10 flex flex-col gap-3 rounded-r-xl mt-3 dark:bg-slate-800">
           {/* <div className=""> */}
             <h1 className="text-5xl font-serif">{data.name}</h1>
             <h1 className="text-2xl">{data.author.name}</h1>
@@ -91,8 +92,8 @@ function BookInfo() {
             <span
             onClick={toggleExpand}
             className=" font-bold rounded cursor-pointer">
-            {isExpanded ? '   See Less' : '...See More'}
-            </span>
+            {isExpanded && data.about.length >=400 ? '   See less' : '...See more'}
+            </span> 
             </div>
 
 
@@ -135,21 +136,21 @@ function BookInfo() {
             </div>
 
             
-            <div className="flex items-center gap-1 text-nowrap">
+            <div className="flex items-center gap-1 text-wrap">
 
               <div className="avatar-group -space-x-6 rtl:space-x-reverse">
                 <div className="avatar">
-                  <div className="w-12">
+                  <div className="w-1/4">
                     <img src={data.want_to_read_images[0]} />
                   </div>
                 </div>
                 <div className="avatar">
-                  <div className="w-12">
+                  <div className="w-1/4">
                     <img src={data.want_to_read_images[1]} />
                   </div>
                 </div>
                 <div className="avatar">
-                  <div className="w-12">
+                  <div className="w-1/4">
                     <img src={data.want_to_read_images[2]} />
                   </div>
                 </div>
@@ -169,11 +170,11 @@ function BookInfo() {
 
         </div>
 
-        <div className="col-span-2 pl-5 rounded-lg shadow-md bg-amber-300 p-5 m-2 mb-1 mt-3 dark:bg-slate-800">
+        <div className="col-span-2 pl-5 rounded-xl shadow-md p-5 m-2 mb-1 mt-3 dark:bg-slate-800">
           <h1 className="text-center font-bold text-2xl mb-5 mt-3">About the Author</h1>
-          <div className="avatar flex items-center justify-center bg--300">
-            <div className=" w-48 pl-3 mb-4">
-              <img src={data.author.image} />
+          <div className="avatar flex items-center justify-center">
+            <div className=" w-48 h-64 pl-3 mb-4">
+              <img src={data.author.image} className="rounded-lg" />
             </div>
           </div>
           <div>
@@ -184,9 +185,8 @@ function BookInfo() {
               </span>
             )}
 
-            <span
-            className="font-bold rounded cursor-pointer">
-            {'...Read More'}
+            <span className="font-bold rounded cursor-pointer">
+              {data.author.about.length >=300 ? <Link>...More</Link> : ''}
             </span>
 
           </div>
@@ -197,7 +197,7 @@ function BookInfo() {
 
 
 async function fetchBookInfo(bookId) {
-    const response = await fetch(`http://127.0.0.1:8000/api/books/${bookId}`);
+    const response = await fetch(`http://127.0.0.1:8000/api/books/${bookId}/`);
     if (!response.ok) {
        throw new Error('Network response was not ok');
     }

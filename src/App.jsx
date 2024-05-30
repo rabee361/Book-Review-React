@@ -14,6 +14,7 @@ import Author from './components/Author'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from './components/HomePage'
 import SignUp from './components/Auth/SignUp'
+import BookPage from './components/BookPage'
 
 function App() {
   const [bookId , setBookId] = useState(1)
@@ -25,9 +26,9 @@ function App() {
 
 return (
     <Router>
-      <div className="bg-amber-400 text-black font-serif dark:bg-gray-900 dark:text-gray-200 transition-all ease-linear duration-100">
+      <div className=" bg-white text-black font-serif dark:bg-gray-900 dark:text-gray-200 transition-all ease-linear duration-100">
           {/* <BookInfo bookId={bookId} /> */}
-          <NavBar/>
+          {/* <NavBar/> */}
           <Routes>
             <Route path="/" element={<HomePage/>} />
             <Route path="/library" element={<Books />} />
@@ -36,8 +37,9 @@ return (
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
           </Routes>
-          <Footer/>
+         {/* <Footer/> */}
 
+          {/* <BookPage/> */}
       </div>
 
     </Router>
