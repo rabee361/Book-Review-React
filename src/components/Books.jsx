@@ -1,12 +1,16 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useQuery} from 'react-query';
 import { keepPreviousData } from '@tanstack/react-query';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
 import Genres from './Genres'
 import Pagination from './Pagination';
+import TokenContext from '../contexts';
 
 function Books({getBook}) {
+
+  const {access , setAccess} = useContext(TokenContext)
+
   const [page , setPage] = useState(1)
   const [genre , setGenre] = useState(' ')
 
@@ -115,11 +119,13 @@ function Books({getBook}) {
 
 
 async function fetchBooks(genre,page) {
-    const response = await fetch(`http://127.0.0.1:8000/api/books/?genre=${genre}&page=${page}`);
-    if (!response.ok) {
-       throw new Error('Network response was not ok');
+  try{
+    const response = await axios.get(`http://127.0.0.1:8000/api/books/?genre=${genre}&page=${page}`);
+    return response.data
+  }
+    catch{
+      return "Network Error"
     }
-    return response.json();
    }
 
 
@@ -156,6 +162,7 @@ async function fetchBooks(genre,page) {
     async function fetchQuotes(){
       try{
         const response = await axios.get('http://127.0.0.1:8000/api/quotes/');
+        
         return response.data
       } catch{
         return 'Network error'

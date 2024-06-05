@@ -1,17 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import { useMutation } from 'react-query'
 import shelf from '../../assets/shelf.jpg'
 import { Link } from 'react-router-dom'
+import TokenContext from '../../contexts'
+import { useNavigate } from 'react-router-dom';
+
 
 function Login() {
 
+    let navigate = useNavigate();
 
     const [username , setUsername] = useState('')
     const [password , setPassword] = useState('')
-    const [refresh , setRefresh] = useState('')
-    const [access , setAccess] = useState('')
+
+    const {access , setAccess} = useContext(TokenContext)
 
     const handlePassword = (e) => {
         setPassword(e.target.value)
@@ -54,11 +58,17 @@ function Login() {
                     'Content-Type': 'application/json',
                 }
             })
+            // console.log(access)
             setAccess(response.data.tokens.access)
-            setRefresh(response.data.tokens.refresh)
-
+            console.log("this is access")
             console.log(access)
-            console.log(refresh)
+            if (access != null) {
+                navigate('/library'); // Redirects to '/target-page'
+
+            }
+            // setRefresh(response.data.tokens.refresh)
+
+            // console.log(refresh)
 
             // Handle successful login here
         // } catch (error) {
