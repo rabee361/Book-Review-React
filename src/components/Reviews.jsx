@@ -96,10 +96,10 @@ function Reviews({bookId}) {
               <small className="text-xs">{review.user.total_reviews} reviews</small>
               <small className="text-xs">23 followers</small>
             </div>
-            <div className=" grid col-span-12 gap-y-1 w-full bg--200">
-              <span className="w-fit text-sm ml-[521px] bg--400 text-nowrap">{review.created}</span>
+            <div className=" grid col-span-12 gap-y-1 w-full">
+              <span className="w-fit text-sm text-nowrap">{review.created}</span>
               {review.text.length > 200 ? <span>{review.text.substring(0,200)} <Link>...read full review </Link> </span> : <span className="w-fit mt-2"> {review.text}</span>}
-              <div className="flex w-fit gap-2 ml-[500px] bg--400 text-xl">
+              <div className="flex w-fit gap-2 text-xl">
                 <span className="flex gap-2 items-center"><small>{review.total_likes}</small><AiOutlineLike className="hover:text-amber-400" /></span>
                 <span className="flex gap-2 items-center">{review.total_comments}<FaRegComment className="hover:text-amber-400" /></span>
               </div>
