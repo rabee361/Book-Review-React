@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import logo from '../assets/logo.svg'
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
 
 function NavBar() {
 
@@ -25,7 +27,7 @@ function NavBar() {
   
   return (
     <>
-        <div className="fixed z-50 navbar h-[10px] text-white dark:text-slate-300 transition-all ease-linear duration-100 nav-blur-start">
+        <div  className="fixed z-50 navbar h-[10px] text-white dark:text-slate-300 transition-all ease-linear duration-100 nav-blur-start">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

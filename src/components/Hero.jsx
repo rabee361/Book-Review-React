@@ -6,28 +6,28 @@ import { motion } from 'framer-motion';
 export default () => {
     const pageVariants = {
         initial: {
-          x: "-5%", // Start from the left outside the viewport
+          x: "-5%", 
           opacity: 0,
         },
         in: {
-          x: "0%", // End at the original position
+          x: "0%",
           opacity: 1,
           transition: {
-            duration: 1, // Duration of the fade-in animation
+            duration: 1,
           },
         },
       };
       
     const pageVariants2 = {
         initial2: {
-        x: "5%", // Start from the left outside the viewport
+        x: "5%", 
         opacity: 0,
         },
         in2: {
-        x: "0%", // End at the original position
+        x: "0%", 
         opacity: 1,
         transition: {
-            duration: 1, // Duration of the fade-in animation
+            duration: 1, 
         },
         },
     };

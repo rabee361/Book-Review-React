@@ -28,13 +28,13 @@ function BookInfo() {
 
 
   return (
-    <div className=" h-full flex flex-col gap-5">
-      <div className=' h-[290px] md:h-[400px] bg-gray-400 dark:bg-gray-900 '>
-        <div className="w-full h-[290px] md:h-[340px] absolute bg-no-repeat bg-center bg-cover blur-3xl brightness-75" style={{ backgroundImage: `url(${data.cover})`}}>
+    <div className=" h-full flex flex-col sm:gap-5">
+      <div className=' h-[290px] sm:h-[400px] bg-gray-400 dark:bg-gray-900 '>
+        <div className="w-full h-[290px] sm:h-[340px] absolute bg-no-repeat bg-center bg-cover blur-3xl brightness-75" style={{ backgroundImage: `url(${data.cover})`}}>
         </div>
-        <div className='relative mt-16 md:ml-10 ml-3 flex gap-3 md:gap-10'>
+        <div className='relative mt-16 sm:ml-10 ml-3 flex gap-3 sm:gap-10'>
           <div className='ml-5'>
-            <img src={data.cover} alt="" className='rounded-2xl min-w-32 max-w-52 w-32 md:w-52' />
+            <img src={data.cover} alt="" className='rounded-2xl min-w-32 max-w-52 w-32 sm:w-52' />
           </div>  
 
           <div className=' mr-3 w-3/4 flex flex-col justify-between text-white'>
@@ -56,8 +56,8 @@ function BookInfo() {
               {data.pages} <small>pages</small>
             </div>
             <div className='flex justify-end gap-4'>
-              <button className=' bg-gray-500 sm:w-48 sm:h-14 w-20 rounded-xl'>add</button>
-              <button className=' bg-gray-500 sm:w-48 sm:h-14 w-20 rounded-xl'>test</button>
+              <button className=' bg-gray-500 sm:w-32 sm:h-10 w-20 sm:rounded-xl rounded-lg'>add</button>
+              <button className=' bg-gray-500 sm:w-32 sm:h-10 w-20 sm:rounded-xl rounded-lg'>test</button>
             </div>
           </div>
         </div>

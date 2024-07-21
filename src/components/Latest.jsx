@@ -7,7 +7,7 @@ import { useState } from 'react'
 import {  motion } from 'framer-motion'
 
 
-function Featured() {
+function Latest() {
     const [selectedId, setSelectedId] = useState(null)
 
     const {data,isLoading,error} = useQuery('books' , fetchBooks)
@@ -20,7 +20,7 @@ function Featured() {
   return (
     <div className="flex flex-col items-center m-7">
         <div className="text-center">
-            <h1 className="text-2xl font-serif m-6">Feature Collection</h1>
+            <h1 className="text-2xl font-serif m-6">Latest</h1>
         </div>
         <div className="carousel sm:carousel-center w-full sm:p-4 space-x-4 rounded-box">
             {data.map((book) => (
@@ -40,7 +40,7 @@ function Featured() {
 
 async function fetchBooks() {
     try{
-        const response = await axios.get('http://127.0.0.1:8000/api/featured/')
+        const response = await axios.get('http://127.0.0.1:8000/api/latest/')
         return response.data
     } catch{
         return "Network error"
@@ -49,4 +49,4 @@ async function fetchBooks() {
 }
 
 
-export default Featured
+export default Latest

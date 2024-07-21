@@ -2,6 +2,7 @@ import React from 'react'
 import cover from '../assets/cover.png'
 import Hero from './Hero'
 import Featured from './Featured'
+import Latest from './Latest'
 
 
 function HomePage() {
@@ -11,6 +12,7 @@ function HomePage() {
         <Hero/>
       </div>
       <Featured/>
+      <Latest/>
     </>
   )
 }
