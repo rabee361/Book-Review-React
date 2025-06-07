@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import cover from '../assets/cover.png'
 import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
